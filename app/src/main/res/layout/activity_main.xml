@@ -13,6 +13,6 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.flgmwt.popularmovies.MovieListFragment"
+        android:name="com.flgmwt.popularmovies.MovieGridFragment"
         />
 </RelativeLayout>

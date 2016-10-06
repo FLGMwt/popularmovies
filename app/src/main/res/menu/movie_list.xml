@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- TODO: swap out this icon -->
     <item
         android:title="@string/sort_by"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        app:showAsAction="ifRoom|withText" >
+        app:showAsAction="always" >
         <menu>
-            <item
-                android:id="@+id/option_sort_by_rating"
-                android:title="@string/rating"
-                />
-            <item
-                android:id="@+id/option_sort_by_popularity"
-                android:title="@string/popularity"
-                />
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/option_sort_by_rating"
+                    android:title="@string/rating"
+                    />
+                <item
+                    android:id="@+id/option_sort_by_popularity"
+                    android:title="@string/popularity"
+                    />
+            </group>
         </menu>
     </item>
 

@@ -13,6 +13,5 @@
         android:id="@+id/tmp_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@android:drawable/ic_menu_sort_by_size"
         />
 </LinearLayout>

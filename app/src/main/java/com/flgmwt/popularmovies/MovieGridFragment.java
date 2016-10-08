@@ -1,6 +1,7 @@
 package com.flgmwt.popularmovies;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,9 +53,11 @@ public class MovieGridFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 MovieSummary movie = movies.get(position);
+                MovieSummary movie = movies.get(position);
+                Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                startActivity(intent);
 
-                Toast.makeText(getActivity(), movie.name, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), movie.name, Toast.LENGTH_SHORT).show();
             }
         });
 

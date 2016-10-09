@@ -5,6 +5,9 @@ package com.flgmwt.popularmovies;
  */
 
 public class MovieSummary {
-    public String name;
-    public String imageLink;
+    public String title;
+    public String posterUrl;
+    public String plotSynopsis;
+    public String rating;
+    public String releaseDate;
 }

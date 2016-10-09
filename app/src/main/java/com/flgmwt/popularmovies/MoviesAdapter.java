@@ -33,10 +33,11 @@ public class MoviesAdapter extends ArrayAdapter<MovieSummary> {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.movie_grid_item, parent, false);
         }
         TextView movieName = (TextView)convertView.findViewById(R.id.tmp_text);
-        movieName.setText(movie.name);
+        movieName.setText(movie.title);
 
         ImageView poster = (ImageView)convertView.findViewById(R.id.tmp_img);
-        Picasso.with(mContext).load(movie.imageLink).into(poster);
+        String moviePosterUrl = "http://image.tmdb.org/t/p/w185" + movie.posterUrl;
+        Picasso.with(mContext).load(moviePosterUrl).into(poster);
 
         return convertView;
     }

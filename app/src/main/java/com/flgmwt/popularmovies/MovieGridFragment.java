@@ -1,7 +1,10 @@
 package com.flgmwt.popularmovies;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -72,14 +76,24 @@ public class MovieGridFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie_grid, container);
 
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo == null || !networkInfo.isConnectedOrConnecting()) {
+            TextView internetWarning = (TextView) rootView.findViewById(R.id.internet_warning);
+            internetWarning.setVisibility(View.VISIBLE);
+            setHasOptionsMenu(false);
+        }
+
         moviesAdapter = new MoviesAdapter(getActivity(), new ArrayList<MovieSummary>());
-        GridView gridView = (GridView)rootView;
+        GridView gridView = (GridView)rootView.findViewById(R.id.movie_grid_view);
         gridView.setAdapter(moviesAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MovieSummary movie = moviesAdapter.getItem(position);
                 Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                intent.putExtra(getString(R.string.movie_extra_key), movie);
                 startActivity(intent);
             }
         });
@@ -115,7 +129,6 @@ public class MovieGridFragment extends Fragment {
                 .appendPath(sortParamemter)
                 .appendQueryParameter("api_key", BuildConfig.MOVIE_DB_API_KEY)
                 .build();
-        Log.e("uri", requestUri.toString());
         RequestQueue queue = Volley.newRequestQueue(getActivity());
         queue.add(new StringRequest(requestUri.toString(),
             new Response.Listener<String>() {

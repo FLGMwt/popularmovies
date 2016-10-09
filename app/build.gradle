@@ -18,6 +18,9 @@ android {
         }
         buildTypes.each {
             it.buildConfigField 'String', 'MOVIE_DB_API_KEY', MOVIE_DB_API_KEY
+            it.buildConfigField 'String', 'MOVIE_POSTER_ROOT', MOVIE_POSTER_ROOT
+            it.buildConfigField 'String', 'MOVIE_POSTER_SIZE_LIST', MOVIE_POSTER_SIZE_LIST
+            it.buildConfigField 'String', 'MOVIE_POSTER_SIZE_DETAIL', MOVIE_POSTER_SIZE_DETAIL
         }
     }
 }

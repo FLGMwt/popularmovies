@@ -33,8 +33,9 @@ public class MoviesAdapter extends ArrayAdapter<MovieSummary> {
         }
 
         ImageView poster = (ImageView)convertView.findViewById(R.id.tmp_img);
-        String moviePosterUrl = "http://image.tmdb.org/t/p/w342" + movie.posterUrl;
+        String moviePosterUrl = BuildConfig.MOVIE_POSTER_ROOT + BuildConfig.MOVIE_POSTER_SIZE_LIST + movie.posterUrl;
         Picasso.with(mContext).load(moviePosterUrl).into(poster);
+        poster.setContentDescription(mContext.getString(R.string.movie_poster_content_description) + movie.title);
 
         return convertView;
     }

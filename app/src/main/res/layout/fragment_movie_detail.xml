@@ -11,8 +11,10 @@
         android:background="@color/colorAccent"
         android:gravity="center_vertical"
         android:paddingLeft="40dp"
-        android:text="Chappie"
-        android:textSize="44dp" />
+        android:paddingStart="40dp"
+        android:paddingRight="40dp"
+        android:id="@+id/movie_detail_title"
+        android:textSize="44sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,48 +30,42 @@
             android:paddingBottom="16dp">
 
             <ImageView
+                android:id="@+id/movie_detail_poster"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimaryDark"
                 android:minHeight="200dp"
                 android:minWidth="160dp"
-                android:src="@mipmap/ic_launcher" />
+                android:contentDescription="@string/movie_poster_content_description_placeholder"
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingLeft="40dp"
+                android:paddingStart="40dp"
+                android:paddingRight="40dp"
                 android:paddingTop="10dp">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/movie_detail_release_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
-                    android:paddingBottom="4dp"
-                    android:text="2015" />
+                    android:textSize="30sp"
+                    android:paddingBottom="4dp"/>
 
                 <TextView
+                    android:id="@+id/movie_detail_rating"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:textStyle="italic"
-                    android:paddingBottom="4dp"
-                    android:text="120min" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="8.1/10" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/movie_detail_plot_synopsis"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Every child comes into the world full of promise and non more so than Chappie; he is gifted, special, a prodigy. Something Something he is a robot." />
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"
@@ -77,43 +73,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="#000000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Trailers"
-            android:textSize="20dp"
-            />
-
-        <!--TODO: replace w/ ListView?-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <!--TODO: convert to item_trailer_list-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_media_play"
-                    android:minWidth="80dp"
-                    android:minHeight="80dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="Trailer 1"
-                    />
-
-            </LinearLayout>
-        </LinearLayout>
-
 
     </LinearLayout>
 

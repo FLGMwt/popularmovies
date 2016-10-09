@@ -52,7 +52,18 @@ public class MovieGridFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            
+            case R.id.option_sort_by_rating:
+                if (!item.isChecked()) {
+                    item.setChecked(true);
+                    getMovies(SortType.Rating);
+                }
+                return true;
+            case R.id.option_sort_by_popularity:
+                if (!item.isChecked()) {
+                    item.setChecked(true);
+                    getMovies(SortType.Popularity);
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -77,13 +88,18 @@ public class MovieGridFragment extends Fragment {
         return rootView;
     }
 
-    private void refreshMovies() {
-        List<MovieSummary> movies = cachedMovies.get(SortType.Rating);
+    private void refreshMovies(SortType sortType) {
+        List<MovieSummary> movies = cachedMovies.get(sortType);
         moviesAdapter.clear();
         moviesAdapter.addAll(movies);
     }
 
     private void getMovies(final SortType sortType) {
+        if (cachedMovies.containsKey(sortType)) {
+            refreshMovies(sortType);
+            return;
+        }
+
         String sortParamemter = "";
         switch (sortType) {
             case Rating:
@@ -107,7 +123,7 @@ public class MovieGridFragment extends Fragment {
             public void onResponse(String response) {
                 List<MovieSummary> movies = parseMovieResponse(response);
                 cachedMovies.put(sortType, movies);
-                refreshMovies();
+                refreshMovies(sortType);
             }
         }, new Response.ErrorListener() {
             @Override

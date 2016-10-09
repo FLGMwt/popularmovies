@@ -1,13 +1,13 @@
+/**
+ * Copyright (C) 2016 Ryan Stelly- All Rights Reserved
+ */
 package com.flgmwt.popularmovies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-/**
- * Created by FLGMwt on 10/7/2016.
- */
-
+/** Activity for MovieDetail */
 public class MovieDetailActivity extends AppCompatActivity {
 
     @Override

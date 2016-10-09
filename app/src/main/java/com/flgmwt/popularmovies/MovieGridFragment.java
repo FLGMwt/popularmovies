@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2016 Ryan Stelly- All Rights Reserved
+ */
 package com.flgmwt.popularmovies;
 
 import android.app.Fragment;
@@ -33,13 +36,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+/** Fragment for Movie Grid
+ * Handles fetching movies and sorting by rating or popularity */
 public class MovieGridFragment extends Fragment {
 
     private static final String LOG_TAG = MovieGridFragment.class.getSimpleName();
 
-    private MoviesAdapter moviesAdapter;
-    private Map<SortType, List<MovieSummary>> cachedMovies = new HashMap<>();
+    private MoviesAdapter mMoviesAdapter;
+    private Map<SortType, List<MovieSummary>> mCachedMovies = new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class MovieGridFragment extends Fragment {
         inflater.inflate(R.menu.movie_list, menu);
     }
 
+    /** Fetches movies when a new sortType is selected */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -72,6 +77,11 @@ public class MovieGridFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Checks internet connectivity to potentially show warning,
+     * sets up gridView,
+     * fires off initial movie load
+     * */
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie_grid, container);
@@ -85,13 +95,13 @@ public class MovieGridFragment extends Fragment {
             setHasOptionsMenu(false);
         }
 
-        moviesAdapter = new MoviesAdapter(getActivity(), new ArrayList<MovieSummary>());
+        mMoviesAdapter = new MoviesAdapter(getActivity(), new ArrayList<MovieSummary>());
         GridView gridView = (GridView)rootView.findViewById(R.id.movie_grid_view);
-        gridView.setAdapter(moviesAdapter);
+        gridView.setAdapter(mMoviesAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MovieSummary movie = moviesAdapter.getItem(position);
+                MovieSummary movie = mMoviesAdapter.getItem(position);
                 Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
                 intent.putExtra(getString(R.string.movie_extra_key), movie);
                 startActivity(intent);
@@ -102,14 +112,16 @@ public class MovieGridFragment extends Fragment {
         return rootView;
     }
 
+    /** Refreshes adapter with new/different movies */
     private void refreshMovies(SortType sortType) {
-        List<MovieSummary> movies = cachedMovies.get(sortType);
-        moviesAdapter.clear();
-        moviesAdapter.addAll(movies);
+        List<MovieSummary> movies = mCachedMovies.get(sortType);
+        mMoviesAdapter.clear();
+        mMoviesAdapter.addAll(movies);
     }
 
+    /** Checks cache for movies for given sortType or queues request to fetch them */
     private void getMovies(final SortType sortType) {
-        if (cachedMovies.containsKey(sortType)) {
+        if (mCachedMovies.containsKey(sortType)) {
             refreshMovies(sortType);
             return;
         }
@@ -129,13 +141,13 @@ public class MovieGridFragment extends Fragment {
                 .appendPath(sortParamemter)
                 .appendQueryParameter("api_key", BuildConfig.MOVIE_DB_API_KEY)
                 .build();
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
+         RequestQueue queue = Volley.newRequestQueue(getActivity());
         queue.add(new StringRequest(requestUri.toString(),
             new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 List<MovieSummary> movies = parseMovieResponse(response);
-                cachedMovies.put(sortType, movies);
+                mCachedMovies.put(sortType, movies);
                 refreshMovies(sortType);
             }
         }, new Response.ErrorListener() {
@@ -146,6 +158,7 @@ public class MovieGridFragment extends Fragment {
         }));
     }
 
+    /** Returns list of movie summaries pased from the json MovieDB response */
     private List<MovieSummary> parseMovieResponse(String json) {
         ArrayList<MovieSummary> movies = new ArrayList<>();
         try {
@@ -167,6 +180,7 @@ public class MovieGridFragment extends Fragment {
         return movies;
     }
 
+    /** Options for sorting type */
     private enum SortType {
         Rating,
         Popularity

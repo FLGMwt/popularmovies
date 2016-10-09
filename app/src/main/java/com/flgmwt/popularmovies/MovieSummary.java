@@ -1,12 +1,12 @@
+/**
+ * Copyright (C) 2016 Ryan Stelly- All Rights Reserved
+ */
 package com.flgmwt.popularmovies;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by FLGMwt on 10/6/2016.
- */
-
+/** Parcelable container for movie data */
 public class MovieSummary implements Parcelable {
     public String title;
     public String posterUrl;
@@ -14,7 +14,7 @@ public class MovieSummary implements Parcelable {
     public String rating;
     public String releaseDate;
 
-    protected MovieSummary() {
+    MovieSummary() {
     }
 
     @Override

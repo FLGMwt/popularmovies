@@ -1,3 +1,6 @@
+/**
+ * Copyright (C) 2016 Ryan Stelly- All Rights Reserved
+ */
 package com.flgmwt.popularmovies;
 
 import android.content.Context;
@@ -11,11 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by FLGMwt on 10/6/2016.
- */
-
-public class MoviesAdapter extends ArrayAdapter<MovieSummary> {
+/** Custom ArrayAdapter for populating Movie GridView*/
+class MoviesAdapter extends ArrayAdapter<MovieSummary> {
 
     private Context mContext;
 
@@ -24,6 +24,7 @@ public class MoviesAdapter extends ArrayAdapter<MovieSummary> {
         mContext = context;
     }
 
+    /** Populates ImageView w/ movie poster and sets contentDescription */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         MovieSummary movie = getItem(position);
@@ -32,7 +33,7 @@ public class MoviesAdapter extends ArrayAdapter<MovieSummary> {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.movie_grid_item, parent, false);
         }
 
-        ImageView poster = (ImageView)convertView.findViewById(R.id.tmp_img);
+        ImageView poster = (ImageView)convertView.findViewById(R.id.grid_movie_poster);
         String moviePosterUrl = BuildConfig.MOVIE_POSTER_ROOT + BuildConfig.MOVIE_POSTER_SIZE_LIST + movie.posterUrl;
         Picasso.with(mContext).load(moviePosterUrl).into(poster);
         poster.setContentDescription(mContext.getString(R.string.movie_poster_content_description) + movie.title);

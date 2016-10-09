@@ -1,9 +1,11 @@
+/**
+ * Copyright (C) 2016 Ryan Stelly- All Rights Reserved
+ */
 package com.flgmwt.popularmovies;
 
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +14,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by FLGMwt on 10/7/2016.
- */
-
+/** Fragment for Movie Detail */
 public class MovieDetailFragment extends Fragment {
 
-    @Nullable
+    /** Populates movie detail layout with movie from Parcelable */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie_detail, container);

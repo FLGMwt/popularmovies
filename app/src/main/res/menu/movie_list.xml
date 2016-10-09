@@ -12,7 +12,6 @@
                 <item
                     android:id="@+id/option_sort_by_rating"
                     android:title="@string/rating"
-                    android:checked="true"
                     />
                 <item
                     android:id="@+id/option_sort_by_popularity"

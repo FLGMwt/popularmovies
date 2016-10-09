@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:height="120dp"
-        android:background="@color/colorAccent"
-        android:gravity="center_vertical"
-        android:paddingLeft="40dp"
-        android:paddingStart="40dp"
-        android:paddingRight="40dp"
-        android:id="@+id/movie_detail_title"
-        android:textSize="44sp" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/movie_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:minHeight="120dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingStart="40dp"
+            android:paddingTop="10dp"
+            android:textSize="44sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp">
-
-            <ImageView
-                android:id="@+id/movie_detail_poster"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:minHeight="200dp"
-                android:minWidth="160dp"
-                android:contentDescription="@string/movie_poster_content_description_placeholder"
-                />
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingLeft="40dp"
-                android:paddingStart="40dp"
-                android:paddingRight="40dp"
-                android:paddingTop="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
 
-                <TextView
-                    android:id="@+id/movie_detail_release_year"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:paddingBottom="4dp"/>
+                <ImageView
+                    android:id="@+id/movie_detail_poster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryDark"
+                    android:contentDescription="@string/movie_poster_content_description_placeholder"
+                    android:minHeight="200dp"
+                    android:minWidth="160dp" />
 
-                <TextView
-                    android:id="@+id/movie_detail_rating"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp"
+                    android:paddingStart="40dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:id="@+id/movie_detail_release_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/movie_detail_rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/movie_detail_plot_synopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mText	Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope." />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#000000" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/movie_detail_plot_synopsis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#000000" />
-
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

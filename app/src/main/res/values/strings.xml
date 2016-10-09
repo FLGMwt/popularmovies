@@ -7,4 +7,7 @@
     <string name="movie_poster_content_description">Movie poster for\u0020</string>
     <string name="movie_poster_content_description_placeholder">Movie poster</string>
     <string name="internet_warning">You must be connected to the Internet to use Popular Movies</string>
+    <string name="preferences_key_sort_order">sort_order</string>
+    <string name="preferences_value_sort_order_rating">rating</string>
+    <string name="preferences_value_sort_order_popularity">popularity</string>
 </resources>

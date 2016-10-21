@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_movie_grid"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.flgmwt.popularmovies.MainActivity">
-
-    <fragment
-        android:id="@+id/fragment_movie_grid"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.flgmwt.popularmovies.MovieGridFragment"
-        />
-</RelativeLayout>
+    android:name="com.flgmwt.popularmovies.MovieGridFragment"
+    />

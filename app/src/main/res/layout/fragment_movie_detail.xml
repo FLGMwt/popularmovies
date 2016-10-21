@@ -37,7 +37,8 @@
 
                 <ImageView
                     android:id="@+id/movie_detail_poster"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimaryDark"
                     android:contentDescription="@string/movie_poster_content_description_placeholder"
@@ -70,15 +71,14 @@
             <TextView
                 android:id="@+id/movie_detail_plot_synopsis"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="mText	Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope." />
+                android:layout_height="wrap_content" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#000000" />
+                android:background="@color/black" />
 
         </LinearLayout>
 
